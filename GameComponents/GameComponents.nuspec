@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>GameComponents</id>
+    <version>0.7</version>
+    <title>GameComponents Utility Collection</title>
+    <authors>Derrick Creamer</authors>
+    <owners>Derrick Creamer</owners>
+    <!-- licenseUrl>https://raw.githubusercontent.com/derrickcreamer/Hemlock/master/LICENSE</licenseUrl -->
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/derrickcreamer/GameComponents</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A collection of components and collection classes for C# games</description>
+    <copyright>Copyright 2020</copyright>
+    <tags>gamedev c# csharp collection</tags>
+    <references>
+      <reference file="GameComponents.dll" />
+    </references>
+  </metadata>
+  <files>
+    <file src="GameComponents/bin/Debug/GameComponents.dll" target="lib" />
+  </files>
+</package>
+
