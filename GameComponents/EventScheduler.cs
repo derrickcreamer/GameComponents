@@ -253,8 +253,9 @@ namespace GameComponents {
 				case RelativeInitiativeOrder.AfterTarget:
 					oc.InsertAfter(targetInitiative, initToInsert); // This call throws if targetInitiative isn't in the collection
 					break;
+				default:
+					throw new InvalidOperationException("Unknown value for relativeOrder");
 			}
-			throw new InvalidOperationException("Unknown value for relativeOrder");
 		}
 		//todo xml
 		// if the given initiative is still being used by any EventScheduling, throws, unless forceCancelEvents is true.

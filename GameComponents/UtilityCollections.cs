@@ -574,7 +574,7 @@ namespace UtilityCollections { // Updated 2017-09-02
 		/// If true, the elements with the highest sort order will be dequeued first, instead of last
 		/// </summary>
 		public bool DescendingOrder { get; protected set; }
-		private static int nextIdx = 0;
+		private int nextIdx = int.MinValue;
 		/// <summary>
 		/// Inserts a new element into the queue according to its sort order
 		/// </summary>
@@ -630,6 +630,10 @@ namespace UtilityCollections { // Updated 2017-09-02
 			return true;
 
 		}
+		//todo... if Remove were to use set.GetViewBetween with a PQElement with int.MinValue and another with int.MaxValue,
+		//  and the same item, it might be faster in the average case, and only add a little overhead in the worst case.
+		//  This could be applied to ChangePriority, too! It'll even work with the 'find all' version.
+
 		/// <summary>
 		/// Removes all instances of the given element from the collection. Returns the number of instances removed. This is an O(n) operation.
 		/// </summary>
