@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using UtilityCollections;
+using PriorityQueue = UtilityCollections.PriorityQueue<GameComponents.EventScheduler.InternalEventScheduling, GameComponents.EventScheduler.InternalEventScheduling>;
 
 namespace GameComponents {
 	public abstract class Initiative { }
@@ -28,7 +29,7 @@ namespace GameComponents {
 	}
 	public class EventScheduler {
 		private long currentTick;
-		private PriorityQueue<InternalEventScheduling, InternalEventScheduling> pq;
+		private PriorityQueue pq;
 		private OrderingCollection<Initiative> oc;
 		private MultiValueDictionary<Initiative, InternalEventScheduling> scheduledEventsForInitiatives;
 		private InternalEventScheduling currentlyExecuting;
@@ -41,7 +42,7 @@ namespace GameComponents {
 			else return oc.Compare(first.Initiative, second.Initiative);
 		}
 		public EventScheduler() {
-			pq = new PriorityQueue<InternalEventScheduling, InternalEventScheduling>(x => x, CompareEventSchedulings);
+			pq = new PriorityQueue(x => x, CompareEventSchedulings);
 			oc = new OrderingCollection<Initiative>();
 			scheduledEventsForInitiatives = new MultiValueDictionary<Initiative, InternalEventScheduling>();
 		}
@@ -50,7 +51,7 @@ namespace GameComponents {
 			IEnumerable<InternalEventScheduling> eventSchedulings,
 			IEnumerable<IGrouping<Initiative, InternalEventScheduling>> eventsForInits)
 		{
-			pq = new PriorityQueue<InternalEventScheduling, InternalEventScheduling>(x => x, eventSchedulings, CompareEventSchedulings);
+			pq = new PriorityQueue(x => x, eventSchedulings, CompareEventSchedulings);
 			oc = new OrderingCollection<Initiative>(inits, null);
 			scheduledEventsForInitiatives = new MultiValueDictionary<Initiative, InternalEventScheduling>(eventsForInits, null);
 		}
@@ -287,7 +288,7 @@ namespace GameComponents {
 		private class InternalInitiative : Initiative{
 			internal bool AutoRemove;
 		}
-		private class InternalEventScheduling : EventScheduling {
+		internal class InternalEventScheduling : EventScheduling {
 			public Initiative Initiative => initiative;
 			public InternalEventScheduling(IEvent scheduledEvent, long currentTick, long delay, Initiative init)
 				: base(scheduledEvent, currentTick, delay, init) { }
