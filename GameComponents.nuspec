@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>GameComponents</id>
-    <version>0.8.0</version>
+    <version>0.8.1</version>
     <title>GameComponents Utility Collection</title>
     <authors>Derrick Creamer</authors>
     <owners>Derrick Creamer</owners>
@@ -13,12 +13,12 @@
     <description>A collection of components and collection classes for C# games</description>
     <copyright>Copyright 2025</copyright>
     <tags>gamedev c# csharp collection</tags>
-    <references>
-      <reference file="GameComponents.dll" />
-    </references>
+	<dependencies>
+	  <group targetFramework="net8.0" />
+	</dependencies>
   </metadata>
   <files>
-    <file src="GameComponents/bin/Debug/net8.0/GameComponents.dll" target="lib" />
+    <file src="GameComponents/bin/Debug/net8.0/GameComponents.dll" target="lib/net8.0" />
   </files>
 </package>
 
